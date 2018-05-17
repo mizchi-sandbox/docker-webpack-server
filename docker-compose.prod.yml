@@ -1,0 +1,17 @@
+version: "3"
+volumes:
+  dist:
+services:
+  client:
+    build:
+      context: ./client
+    command: "yarn build:prod"
+    volumes:
+      - dist:/client/dist:rw
+  server:
+    build:
+      context: ./server
+    ports:
+      - "9000:9000"
+    volumes:
+      - dist:/server/dist:ro

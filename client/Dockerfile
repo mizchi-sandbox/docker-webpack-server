@@ -17,9 +17,5 @@ COPY ./yarn.lock /client/yarn.lock
 COPY ./src /client/src
 
 RUN yarn install
-RUN ls /
-RUN ls /client
-RUN yarn build:prod
 
 EXPOSE 8080 8081
-CMD ["yarn", "start"]
