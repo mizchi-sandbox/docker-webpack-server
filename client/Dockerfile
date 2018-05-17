@@ -16,6 +16,5 @@ COPY ./src /client/src
 
 RUN yarn install
 
-EXPOSE 8080
-EXPOSE 8081
+EXPOSE 8080 8081
 CMD ["yarn", "watch"]
