@@ -1,5 +1,6 @@
 FROM node:8.11.1
 
+RUN mkdir -p /server
 WORKDIR /server
 
 # Setup tini to avoid PID 1

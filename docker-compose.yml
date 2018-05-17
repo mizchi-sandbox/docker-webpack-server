@@ -1,8 +1,13 @@
 version: "3"
+volumes:
+  dist:
 services:
   client:
     build:
       context: ./client
+    command: "yarn build"
+    volumes:
+      - dist:/client/dist:rw
     ports:
       - "8080:8080"
       - "8081:8081"
@@ -11,3 +16,5 @@ services:
       context: ./server
     ports:
       - "9000:9000"
+    volumes:
+      - dist:/service/dist:ro
