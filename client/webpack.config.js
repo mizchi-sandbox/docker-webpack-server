@@ -23,5 +23,8 @@ module.exports = {
     new HtmlPlugin({
       template: path.join(__dirname, 'src/index.html')
     })
-  ]
+  ],
+  serve: {
+    host: '0.0.0.0'
+  }
 }
