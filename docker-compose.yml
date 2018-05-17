@@ -3,7 +3,11 @@ services:
   client:
     build:
       context: ./client
-      dockerfile: ./Dockerfile
     ports:
       - "8080"
       - "8081"
+  server:
+    build:
+      context: ./server
+    ports:
+      - "9000"
