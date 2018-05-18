@@ -3,7 +3,7 @@ services:
   assets:
     build:
       context: ./assets
-      target: dev-server
+      target: dev
     volumes:
       - ./dist:/assets/dist:rw
       - ./assets/src:/assets/src:rw

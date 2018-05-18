@@ -3,8 +3,9 @@ services:
   assets:
     build:
       context: ./assets
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile
+      target: builder
     volumes:
-      - ./dist:/assets/dist:rw
+      - ./dist:/host/dist:rw
     ports:
       - "8080:80"
