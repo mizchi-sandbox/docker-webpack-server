@@ -1,16 +1,14 @@
 # docker-webpack-server
 
-WIP
-
 ```sh
-# WIP: development
-docker-compose -f docker-cempose.dev.yml
+# development
+docker-compose up
 
 # production
-docker-compose -f docker-cempose.prod.yml
+docker-compose -f docker-cempose.prod.yml up --build
 ```
 
-open localhost:9000
+open localhost:8080
 
 ## LICENSE
 

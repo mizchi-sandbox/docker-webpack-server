@@ -6,7 +6,7 @@ services:
       target: dev-server
     volumes:
       - ./dist:/assets/dist:rw
-      # - ./assets/src:/assets/src:rw
+      - ./assets/src:/assets/src:rw
     ports:
       - "8080:8080"
       - "8081:8081"

@@ -3,8 +3,8 @@ services:
   assets:
     build:
       context: ./assets
+      dockerfile: Dockerfile.prod
     volumes:
       - ./dist:/assets/dist:rw
-      # - ./assets/src:/assets/src:rw
     ports:
       - "8080:80"

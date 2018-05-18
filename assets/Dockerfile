@@ -13,7 +13,6 @@ ENTRYPOINT ["/tini", "--"]
 # install
 COPY ./webpack.config.js /assets/webpack.config.js
 COPY ./serve.config.js /assets/serve.config.js
-COPY ./src /assets/src
 COPY ./package.json /assets/package.json
 COPY ./yarn.lock /assets/yarn.lock
 
@@ -22,11 +21,3 @@ RUN yarn install
 EXPOSE 8080 8081
 
 CMD yarn start
-
-# --- production ---
-FROM dev-server as builder
-
-RUN yarn build:prod
-FROM nginx:1.14-alpine
-COPY --from=builder /assets/dist /usr/share/nginx/html
-EXPOSE 80
