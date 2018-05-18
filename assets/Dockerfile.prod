@@ -13,7 +13,6 @@ RUN yarn install
 COPY ./src /assets/src
 RUN yarn build:prod
 
-# --- production ---
 FROM nginx:1.14-alpine
 COPY --from=builder /assets/dist /usr/share/nginx/html
 EXPOSE 80
