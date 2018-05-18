@@ -1,6 +1,5 @@
-FROM node:8.11.1 as dev-server
+FROM node:8.11 as dev
 
-RUN mkdir -p /assets
 WORKDIR /assets
 
 # Setup tini to avoid PID 1
@@ -15,9 +14,16 @@ COPY ./webpack.config.js /assets/webpack.config.js
 COPY ./serve.config.js /assets/serve.config.js
 COPY ./package.json /assets/package.json
 COPY ./yarn.lock /assets/yarn.lock
-
 RUN yarn install
 
 EXPOSE 8080 8081
-
 CMD yarn start
+
+FROM dev as builder
+COPY ./src /assets/src
+RUN yarn build:prod
+CMD ["cp", "-r", "./dist", "/host"]
+
+FROM nginx:1.14-alpine
+COPY --from=builder /assets/dist /usr/share/nginx/html/
+EXPOSE 80
